@@ -14,11 +14,11 @@
   <div class="logo"><img id="logo" src="images/light-logo.png" alt="Logo" width="100" /></div>
   <div class="menu-toggle" id="menu-toggle">&#9776;</div>
   <ul class="nav-links" id="nav-links">
-  <li><a href="#home">Home</a></li>
-    <li><a href="#about">About</a></li>
-    <li><a href="#projects">Projects</a></li>
-    <li><a href="#skills">Skills</a></li>
-    <li><a href="#contact">Contact</a></li>
+    <li><a href="#about" class="nav-but">About</a></li>
+    <li><a href="#projects" class="nav-but">Projects</a></li>
+    <li><a href="#skills" class="nav-but">Skills</a></li>
+    <li><a href="#reviews" class="nav-but">Reviews</a></li>
+    <li><a href="#contact" class="nav-but">Contact</a></li>
   </ul>
 </nav>
           <button class="themeb" onclick="toggleMode()">
@@ -280,6 +280,29 @@ I love the fragile colour combinations, it really blends out well</li>
   AOS.init();
 </script>
 </body>
+<script>
+  const sections = document.querySelectorAll("section");
+  const navLinks = document.querySelectorAll(".nav-but");
+
+  window.addEventListener("scroll", () => {
+    let current = "";
+
+    sections.forEach(section => {
+      const sectionTop = section.offsetTop - 100;
+      const sectionHeight = section.offsetHeight;
+      if (pageYOffset >= sectionTop && pageYOffset < sectionTop + sectionHeight) {
+        current = section.getAttribute("id");
+      }
+    });
+
+    navLinks.forEach(link => {
+      link.classList.remove("active");
+      if (link.getAttribute("href") === `#${current}`) {
+        link.classList.add("active");
+      }
+    });
+  });
+</script>
 <script src="script.js"></script>
 </html>
 
