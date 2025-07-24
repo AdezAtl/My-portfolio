@@ -225,6 +225,7 @@ h3 {
   transform: rotateY(10deg) rotateX(10deg);
   box-shadow: 0 0 60px rgba(255, 0, 0, 0.5), 0 0 100px rgba(255, 0, 0, 0.3);
 }
+<<<<<<< HEAD
 
 html {
 scroll-behavior: smooth;
@@ -235,3 +236,5 @@ scroll-behavior: smooth;
   font-weight: bold;
   border-bottom: 2px solid crimson;
 }
+=======
+>>>>>>> c090237 (Updated HTML and CSS files)
