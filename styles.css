@@ -229,3 +229,9 @@ h3 {
 html {
 scroll-behavior: smooth;
 }
+
+.nav-but.active {
+  color: crimson;
+  font-weight: bold;
+  border-bottom: 2px solid crimson;
+}
