@@ -96,13 +96,13 @@ h1 { font-size: 2em; }
 
 .skill-card .content { position: relative; z-index: 2; padding: 20px; text-align: center; }
 
-.skill-card h4 { margin-top: 10px; font-size: 1.2rem; }
+.skill-card h4 { margin-top: 10px; font-size: 1rem; margin-right: 10px; }
 
 .skill-card p { font-size: 0.9rem; margin-top: 10px; }
 
 @keyframes fadeInUp { from { opacity: 0; transform: translateY(40px); } to { opacity: 1; transform: translateY(0); } }
 
-@keyframes shimmer { 0% { transform: rotate(25deg) translateX(-100%); } 100% { transform: rotate(25deg) translateX(100%); } }
+@keyframes shimmer { 0% { transform: rotate(25deg) translateX(-100%); } 100% { transform: rotate(50deg) translateX(100%); } }
 
 @keyframes neonPulse { 0%, 100% { box-shadow: 0 0 10px var(--glow-shadow), 0 0 20px var(--glow-shadow-light); } 50% { box-shadow: 0 0 20px var(--glow-shadow-strong), 0 0 40px var(--glow-shadow); } }
 
