@@ -2,57 +2,313 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>Contact Us</title>
-    <link rel="stylesheet" href="contactstyle.css">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Contact Us | CRE8IVE_pixelz</title>
+    <style>
+        :root {
+            --primary: #3498db;
+            --secondary: #2c3e50;
+            --accent: #e74c3c;
+            --light: #ecf0f1;
+            --dark: #2c3e50;
+            --shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            --transition: all 0.3s ease;
+        }
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: linear-gradient(135deg, #1a2a6c, #b21f1f, #1a2a6c);
+            color: white;
+            line-height: 1.6;
+            overflow-x: hidden;
+        }
+        
+        /* Header styles */
+        .header {
+            background: rgba(0, 0, 0, 0.7);
+            padding: 15px 5%;
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.3);
+        }
+        
+        .navbar {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        
+        .left-nav {
+            display: flex;
+            align-items: center;
+            gap: 20px;
+        }
+        
+        .back-btn {
+            transition: var(--transition);
+        }
+        
+        .back-btn:hover {
+            transform: translateX(-5px);
+        }
+        
+        .back-button {
+            width: 30px;
+            height: 30px;
+            filter: invert(1);
+        }
+        
+        .logo img {
+            height: 50px;
+            transition: var(--transition);
+        }
+        
+        .logo img:hover {
+            transform: scale(1.05);
+        }
+        
+        /* Floating symbols */
+        .floating-symbol {
+            position: fixed;
+            font-size: 2rem;
+            opacity: 0.2;
+            z-index: -1;
+            animation: float 6s ease-in-out infinite;
+        }
+        
+        @keyframes float {
+            0%, 100% { transform: translateY(0) rotate(0deg); }
+            50% { transform: translateY(-30px) rotate(10deg); }
+        }
+        
+        /* Contact section */
+        .contact-section {
+            max-width: 1200px;
+            margin: 50px auto;
+            padding: 0 20px;
+            display: flex;
+            flex-wrap: wrap;
+            gap: 50px;
+            justify-content: center;
+            align-items: center;
+        }
+        
+        .contact-form {
+            flex: 1;
+            min-width: 300px;
+            max-width: 500px;
+            background: rgba(0, 0, 0, 0.7);
+            padding: 40px;
+            border-radius: 15px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+        }
+        
+        .contact-form h1 {
+            font-size: 2.5rem;
+            margin-bottom: 30px;
+            color: #ffcc00;
+            text-align: center;
+        }
+        
+        .contact-form label {
+            display: block;
+            margin-bottom: 8px;
+            font-weight: 600;
+            font-size: 1.1rem;
+        }
+        
+        .contact-form input,
+        .contact-form textarea {
+            width: 100%;
+            padding: 15px;
+            margin-bottom: 25px;
+            border: none;
+            border-radius: 8px;
+            background: rgba(255, 255, 255, 0.1);
+            color: white;
+            font-size: 1rem;
+            transition: var(--transition);
+        }
+        
+        .contact-form input:focus,
+        .contact-form textarea:focus {
+            outline: none;
+            background: rgba(255, 255, 255, 0.2);
+            box-shadow: 0 0 0 2px var(--primary);
+        }
+        
+        .contact-form input::placeholder,
+        .contact-form textarea::placeholder {
+            color: rgba(255, 255, 255, 0.6);
+        }
+        
+        .contact-form textarea {
+            height: 150px;
+            resize: vertical;
+        }
+        
+        .contact-form button {
+            width: 100%;
+            padding: 15px;
+            background: var(--primary);
+            color: white;
+            border: none;
+            border-radius: 8px;
+            font-size: 1.1rem;
+            font-weight: 600;
+            cursor: pointer;
+            transition: var(--transition);
+        }
+        
+        .contact-form button:hover {
+            background: var(--accent);
+            transform: translateY(-3px);
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+        }
+        
+        .contact-illustration {
+            flex: 1;
+            min-width: 300px;
+            max-width: 500px;
+            text-align: center;
+        }
+        
+        .contact-illustration img {
+            width: 100%;
+            border-radius: 15px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+            transition: var(--transition);
+        }
+        
+        .contact-illustration img:hover {
+            transform: scale(1.02);
+        }
+        
+        /* Dark mode styles */
+        .dark-mode {
+            background: linear-gradient(135deg, #121212, #1a1a2e, #121212);
+        }
+        
+        .dark-mode .contact-form {
+            background: rgba(30, 30, 30, 0.8);
+        }
+        
+        /* Responsive styles */
+        @media (max-width: 900px) {
+            .contact-section {
+                flex-direction: column;
+                gap: 30px;
+            }
+            
+            .contact-form,
+            .contact-illustration {
+                width: 100%;
+                max-width: 600px;
+            }
+        }
+        
+        @media (max-width: 480px) {
+            .contact-form {
+                padding: 30px 20px;
+            }
+            
+            .contact-form h1 {
+                font-size: 2rem;
+            }
+        }
+    </style>
 </head>
 <body>
-  <section class="header">
-  <div class="nav-nav">  
-  <nav class="navbar">
-  <div class="left-nav">
-      <div class="back-btn">
-    <a href="index.html" class="back-link">
-      <img class="back-button" src="images/back.png" alt="Back">
-    </a>
-    </div>
-    <div class="logo">
-      <img id="logo" src="images/dark-logo.png" alt="Logo">
-    </div>
-  </div>
-</nav>
-</div>
-</section>
-  <!-- Floating symbols -->
-  <span class="floating-symbol" style="left: 10%; animation-delay: 0s;">★</span>
-  <span class="floating-symbol" style="left: 25%; animation-delay: 2s;">⚙</span>
-  <span class="floating-symbol" style="left: 40%; animation-delay: 4s;">∞</span>
-  <span class="floating-symbol" style="left: 60%; animation-delay: 1s;">⌘</span>
-  <span class="floating-symbol" style="left: 75%; animation-delay: 3s;">☁</span>
-  <span class="floating-symbol" style="left: 90%; animation-delay: 5s;">✦</span>
-    <section class="contact-section" id="contact">     
-      <div style="background-color: #007BFF; height: auto; border-radius: 15px; padding: 25px;"><h1>CONTACT US</h1>
-      </div>
-  <div class="contact-form">
-<h2>Drop Us A Line</h2>
-    <form>
-      <label for="name">Full Name</label>
-      <input type="text" id="name" name="name" placeholder="What's your full name?" required>
+    <section class="header">
+        <div class="nav-nav">  
+            <nav class="navbar">
+                <div class="left-nav">
+                    <div class="back-btn">
+                        <a href="index.html" class="back-link">
+                            <img class="back-button" src="images/back.png" alt="Back">
+                        </a>
+                    </div>
+                    <div class="logo">
+                        <img id="logo" src="images/dark-logo.png" alt="Logo">
+                    </div>
+                </div>
+                
+                <div class="themeb"><button onclick="toggleMode()" style="background-color: white; border: 2px solid wheat; width: 30px; height: 30px; object-fit: contain; border-radius: 50%"><img style="width: 100%; height: 100%" src="images/light_theme.png" alt=""></button></div>
+            </nav>
+            
+        </div>
+    </section>
+    
+    <!-- Floating symbols -->
+    <span class="floating-symbol" style="left: 10%; animation-delay: 0s;">★</span>
+    <span class="floating-symbol" style="left: 25%; animation-delay: 2s;">⚙</span>
+    <span class="floating-symbol" style="left: 40%; animation-delay: 4s;">∞</span>
+    <span class="floating-symbol" style="left: 60%; animation-delay: 1s;">⌘</span>
+    <span class="floating-symbol" style="left: 75%; animation-delay: 3s;">☁</span>
+    <span class="floating-symbol" style="left: 90%; animation-delay: 5s;">✦</span>
+    
+    <section class="contact-section" id="contact">           
+        <div class="contact-form">
+            <h1>WRITE TO US:</h1>
+            <form>
+                <label for="name">Full Name</label>
+                <input type="text" id="name" name="name" placeholder="What's your full name?" required>
 
-      <label for="email">Email address</label>
-      <input type="email" id="email" name="email" placeholder="you@example.com" required>
+                <label for="email">Email address</label>
+                <input type="email" id="email" name="email" placeholder="you@example.com" required>
 
-      <label for="message">Message</label>
-      <textarea id="message" name="message" placeholder="Write your message for the team here" required></textarea>
+                <label for="message">Message</label>
+                <textarea id="message" name="message" placeholder="Write your message for the team here" required></textarea>
 
-      <button type="submit">Send Message</button>
-    </form>
-  </div>
+                <button type="submit">Send Message</button>
+            </form>
+        </div>
 
-  <div class="contact-illustration">
-    <img src="images/contact.jpg" alt="Illustration" />
-  </div>
-</section>
+        <div class="contact-illustration">
+            <div style="height: 600px; border-radius: 15px; display: flex; align-items: center; justify-content: center; color: white; font-size: 1.5rem;">
+                <img style="width: 100%; height: 100%; z-index: 10;" src="images/contact.png" alt="">
+            </div>
+        </div>
+    </section>
+    
+    <script>
+        // Theme toggle functions (matches your portfolio functionality)
+        function toggleMode() {
+            if (document.body.classList.contains('dark-mode')) {
+                applyLightMode();
+                localStorage.setItem('theme', 'light');
+            } else {
+                applyDarkMode();
+                localStorage.setItem('theme', 'dark');
+            }
+        }
+
+        function applyDarkMode() {
+            document.body.classList.add('dark-mode');
+            document.getElementById('logo').src = "images/dark-logo.png";
+        }
+
+        function applyLightMode() {
+            document.body.classList.remove('dark-mode');
+            document.getElementById('logo').src = "images/light-logo.png";
+        }
+
+        // Apply saved theme on load
+        window.addEventListener('load', () => {
+            const mode = localStorage.getItem('theme');
+            if (mode === 'dark') {
+                applyDarkMode();
+            } else {
+                applyLightMode();
+            }
+        });
+    </script>
 </body>
-
-<script src="contactscript.js"></script>
 </html>
