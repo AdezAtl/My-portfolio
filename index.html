@@ -378,22 +378,42 @@
     
     /* Reviews section */
     .review-board {
-      display: grid;
-      grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
-      gap: 15px;
-      margin-top: 30px;
-    }
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+    gap: 30px;
+    margin-top: 30px;
+    max-width: 1200px; /* Add this */
+    margin-left: auto; /* Add this */
+    margin-right: auto; /* Add this */
+}
     
     .review-card {
-      background: rgba(255, 255, 255, 0.1);
-      border-radius: 15px;
-      padding: 10px;
-      display: flex;
-      gap: 10px;
-      transition: var(--transition);
-      margin-left: 0;
-    }
-    
+    background: rgba(255, 255, 255, 0.1);
+    border-radius: 15px;
+    padding: 25px;
+    display: flex;
+    gap: 20px;
+    transition: var(--transition);
+    max-width: 100%; /* Add this */
+    overflow: hidden; /* Add this */
+}
+
+.review-card p {
+    word-wrap: break-word; /* Add this */
+    overflow-wrap: break-word; /* Add this */
+    max-width: 100%; /* Add this */
+}
+
+.review-card ul {
+    padding-left: 20px;
+    max-width: 100%; /* Add this */
+    overflow: hidden; /* Add this */
+}
+
+.review-card li {
+    margin-bottom: 8px;
+    word-break: break-word; /* Add this */
+}
     .review-card:hover {
       transform: translateY(-10px);
       box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
@@ -412,9 +432,6 @@
       margin-bottom: 10px;
     }
     
-    .review-card ul {
-      padding-left: 20px;
-    }
     
     .review-card li {
       margin-bottom: 8px;
