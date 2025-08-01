@@ -849,6 +849,122 @@
         applyLightMode();
       }
     });
+
+
+    document.addEventListener('DOMContentLoaded', () => {
+            const slidesContainer = document.getElementById('slides-container');
+            const prevBtn = document.getElementById('prev-btn');
+            const nextBtn = document.getElementById('next-btn');
+            const slideIndicators = document.getElementById('slide-indicators');
+            const projectThumbnails = document.getElementById('project-thumbnails');
+            
+            const slides = document.querySelectorAll('.slide');
+            const totalSlides = slides.length;
+            let currentSlide = 0;
+            let autoSlideInterval;
+            
+            // Create indicators and thumbnails
+            slides.forEach((slide, index) => {
+                // Create indicator
+                const indicator = document.createElement('div');
+                indicator.classList.add('indicator');
+                if (index === 0) indicator.classList.add('active');
+                indicator.addEventListener('click', () => goToSlide(index));
+                slideIndicators.appendChild(indicator);
+                
+                // Create thumbnail
+                const thumbnail = document.createElement('div');
+                thumbnail.classList.add('thumbnail');
+                if (index === 0) thumbnail.classList.add('active');
+                
+                // Use the background from the slide or create a placeholder
+                const bgColor = window.getComputedStyle(slide.querySelector('.slide-image')).backgroundImage;
+                thumbnail.style.background = bgColor || 'rgba(255,255,255,0.1)';
+                
+                thumbnail.addEventListener('click', () => goToSlide(index));
+                projectThumbnails.appendChild(thumbnail);
+            });
+            
+            // Navigation functions
+            function goToSlide(index) {
+                currentSlide = index;
+                updateSlidePosition();
+                updateActiveStates();
+                resetAutoSlide();
+            }
+            
+            function updateSlidePosition() {
+                slidesContainer.style.transform = `translateX(-${currentSlide * 100}%)`;
+            }
+            
+            function updateActiveStates() {
+                // Update indicators
+                document.querySelectorAll('.indicator').forEach((indicator, index) => {
+                    indicator.classList.toggle('active', index === currentSlide);
+                });
+                
+                // Update thumbnails
+                document.querySelectorAll('.thumbnail').forEach((thumbnail, index) => {
+                    thumbnail.classList.toggle('active', index === currentSlide);
+                });
+            }
+            
+            function nextSlide() {
+                currentSlide = (currentSlide + 1) % totalSlides;
+                updateSlidePosition();
+                updateActiveStates();
+            }
+            
+            function prevSlide() {
+                currentSlide = (currentSlide - 1 + totalSlides) % totalSlides;
+                updateSlidePosition();
+                updateActiveStates();
+            }
+            
+            // Auto slide functionality
+            function startAutoSlide() {
+                autoSlideInterval = setInterval(nextSlide, 5000);
+            }
+            
+            function resetAutoSlide() {
+                clearInterval(autoSlideInterval);
+                startAutoSlide();
+            }
+            
+            // Event listeners
+            prevBtn.addEventListener('click', () => {
+                prevSlide();
+                resetAutoSlide();
+            });
+            
+            nextBtn.addEventListener('click', () => {
+                nextSlide();
+                resetAutoSlide();
+            });
+            
+            // Keyboard navigation
+            document.addEventListener('keydown', (e) => {
+                if (e.key === 'ArrowLeft') {
+                    prevSlide();
+                    resetAutoSlide();
+                } else if (e.key === 'ArrowRight') {
+                    nextSlide();
+                    resetAutoSlide();
+                }
+            });
+            
+            // Start auto sliding
+            startAutoSlide();
+            
+            // Pause on hover
+            slidesContainer.addEventListener('mouseenter', () => {
+                clearInterval(autoSlideInterval);
+            });
+            
+            slidesContainer.addEventListener('mouseleave', () => {
+                startAutoSlide();
+            });
+        });
   </script>
 </body>
 </html>
