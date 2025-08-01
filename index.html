@@ -1104,6 +1104,7 @@
                 
                 // Use the background from the slide or create a placeholder
                 const bgColor = window.getComputedStyle(slide.querySelector('.slide-image')).backgroundImage;
+                 thumbnail.style.background = bgColor || 'rgba(255,255,255,0.1)';
                  thumbnail.addEventListener('click', () => goToSlide(index));
                 projectThumbnails.appendChild(thumbnail);
             });
