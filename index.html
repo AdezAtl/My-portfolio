@@ -567,10 +567,20 @@
         }
         
         .slide-image {
-            width: 100%;
-            height: 100%;
-            object-fit: cover;
-        }
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block; /* Add this */
+    position: absolute; /* Add this */
+    top: 0;
+    left: 0;
+}
+
+.slide {
+    min-width: 100%;
+    position: relative;
+    height: 100%; /* Add this */
+}
         
         .slide-content {
             position: absolute;
@@ -810,7 +820,7 @@
             <div class="slides-container" id="slides-container">
                 <!-- Slide 1 -->
                 <div class="slide">
-                    <div class="slide-image" style="background: linear-gradient(45deg, #3498db, #2c3e50);"></div>
+                   <img class="slide-image" src="images/grace.png" alt="">
                     <div class="slide-content">
                         <h3 class="slide-title">GRACE Design</h3>
                         <p class="slide-description">A graphical message about the grace of God, created with careful attention to typography and visual hierarchy.</p>
@@ -820,7 +830,7 @@
                 
                 <!-- Slide 2 -->
                 <div class="slide">
-                    <div class="slide-image" style="background: linear-gradient(45deg, #e74c3c, #c0392b);"></div>
+                    <img class="slide-image" src="images/real.png" alt="">
                     <div class="slide-content">
                         <h3 class="slide-title">REAL ESTATE-ING</h3>
                         <p class="slide-description">Designed a bold, modern flyer for a real estate training session aimed at aspiring agents and investors.</p>
@@ -830,7 +840,7 @@
                 
                 <!-- Slide 3 -->
                 <div class="slide">
-                    <div class="slide-image" style="background: linear-gradient(45deg, #2ecc71, #27ae60);"></div>
+                    <img class="slide-image" src="images/fibroid.png" alt="">
                     <div class="slide-content">
                         <h3 class="slide-title">FIBROID AWARENESS</h3>
                         <p class="slide-description">Campaign design for NIMSA-ELF to create awareness and educate the public about fibroid disease.</p>
@@ -840,9 +850,9 @@
                 
                 <!-- Slide 4 -->
                 <div class="slide">
-                    <div class="slide-image" style="background: linear-gradient(45deg, #9b59b6, #8e44ad);"></div>
+                    <img class="slide-image" src="images/season.png" alt="">
                     <div class="slide-content">
-                        <h3 class="slide-title">SEASON'S GREETINGS</h3>
+                        <h3 class="slide-title">BUONE FESTE</h3>
                         <p class="slide-description">Holiday design that can be sent out to commemorate with loved ones, friends and families.</p>
                         <a href="#" class="slide-link">View Project</a>
                     </div>
@@ -850,7 +860,7 @@
                 
                 <!-- Slide 5 -->
                 <div class="slide">
-                    <div class="slide-image" style="background: linear-gradient(45deg, #f1c40f, #f39c12);"></div>
+                    <img class="slide-image" src="images/fly-high.png" alt="">
                     <div class="slide-content">
                         <h3 class="slide-title">FLY HIGH</h3>
                         <p class="slide-description">Web3 design showcasing my proficiency in modern digital design trends and blockchain aesthetics.</p>
@@ -938,7 +948,7 @@
         </div>
         
         <div class="review-card">
-          <div style="background: #e74c3c; width: 70px; height: 70px; border-radius: 50%;"><img src="images/project7.jpg" alt=""></div>
+          <div style="background: #e74c3c; width: 70px; height: 70px; border-radius: 50%;"><img src="images/meeyah.png" alt=""></div>
           <div>
             <h3>CEO, MEEYAH SPICES</h3>
             <p>Guyyyy! You're the best</p>
