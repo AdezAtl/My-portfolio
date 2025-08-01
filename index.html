@@ -1103,8 +1103,14 @@
                 if (index === 0) thumbnail.classList.add('active');
                 
                 // Use the background from the slide or create a placeholder
-                const bgColor = window.getComputedStyle(slide.querySelector('.slide-image')).backgroundImage;
-                 thumbnail.style.background = bgColor || 'rgba(255,255,255,0.1)';
+                const imgElement = slide.querySelector('.slide-image');
+if (imgElement) {
+    const thumbnailImg = document.createElement('img');
+    thumbnailImg.src = imgElement.src;
+    thumbnail.appendChild(thumbnailImg);
+} else {
+    thumbnail.style.background = 'rgba(255,255,255,0.1)';
+}
                  thumbnail.addEventListener('click', () => goToSlide(index));
                 projectThumbnails.appendChild(thumbnail);
             });
