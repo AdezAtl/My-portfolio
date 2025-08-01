@@ -518,6 +518,232 @@
         object-fit: cover;
         height: 70px;
     }
+
+            
+        /* Projects Gallery Section */
+        .projects-container {
+            max-width: 1200px;
+            margin: 50px auto;
+            padding: 0 20px;
+        }
+        
+        .section-title {
+            text-align: center;
+            font-size: 2.5rem;
+            margin-bottom: 40px;
+            color: #ffcc00;
+            text-shadow: 0 2px 10px rgba(0, 0, 0, 0.5);
+            position: relative;
+        }
+        
+        .section-title::after {
+            content: '';
+            display: block;
+            width: 100px;
+            height: 4px;
+            background: #ffcc00;
+            margin: 15px auto;
+            border-radius: 2px;
+        }
+        
+        .gallery-slideshow {
+            position: relative;
+            max-width: 1000px;
+            margin: 0 auto;
+            overflow: hidden;
+            border-radius: 15px;
+            box-shadow: 0 15px 35px rgba(0, 0, 0, 0.5);
+        }
+        
+        .slides-container {
+            display: flex;
+            transition: transform 0.5s ease-in-out;
+            height: 500px;
+        }
+        
+        .slide {
+            min-width: 100%;
+            position: relative;
+        }
+        
+        .slide-image {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+        
+        .slide-content {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            background: linear-gradient(to top, rgba(0,0,0,0.9), transparent);
+            padding: 30px;
+            color: white;
+        }
+        
+        .slide-title {
+            font-size: 2rem;
+            margin-bottom: 10px;
+            color: #ffcc00;
+        }
+        
+        .slide-description {
+            font-size: 1.1rem;
+            margin-bottom: 15px;
+            max-width: 80%;
+        }
+        
+        .slide-link {
+            display: inline-block;
+            background: var(--primary);
+            color: white;
+            text-decoration: none;
+            padding: 10px 20px;
+            border-radius: 5px;
+            font-weight: 600;
+            transition: var(--transition);
+        }
+        
+        .slide-link:hover {
+            background: var(--accent);
+            transform: translateY(-3px);
+        }
+        
+        /* Navigation controls */
+        .gallery-controls {
+            display: flex;
+            justify-content: center;
+            margin-top: 30px;
+            gap: 20px;
+        }
+        
+        .control-btn {
+            background: rgba(255, 255, 255, 0.1);
+            border: none;
+            color: white;
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            font-size: 1.5rem;
+            cursor: pointer;
+            transition: var(--transition);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        
+        .control-btn:hover {
+            background: var(--primary);
+            transform: scale(1.1);
+        }
+        
+        .slide-indicators {
+            display: flex;
+            justify-content: center;
+            gap: 10px;
+            margin-top: 20px;
+        }
+        
+        .indicator {
+            width: 12px;
+            height: 12px;
+            border-radius: 50%;
+            background: rgba(255, 255, 255, 0.3);
+            cursor: pointer;
+            transition: var(--transition);
+        }
+        
+        .indicator.active {
+            background: var(--primary);
+            transform: scale(1.2);
+        }
+        
+        /* Project thumbnails */
+        .project-thumbnails {
+            display: flex;
+            justify-content: center;
+            flex-wrap: wrap;
+            gap: 15px;
+            margin-top: 40px;
+            padding: 0 20px;
+        }
+        
+        .thumbnail {
+            width: 120px;
+            height: 80px;
+            border-radius: 8px;
+            overflow: hidden;
+            cursor: pointer;
+            transition: var(--transition);
+            border: 3px solid transparent;
+            opacity: 0.7;
+        }
+        
+        .thumbnail:hover {
+            transform: translateY(-5px);
+            opacity: 1;
+        }
+        
+        .thumbnail.active {
+            border-color: var(--primary);
+            opacity: 1;
+            transform: translateY(-5px);
+        }
+        
+        .thumbnail img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+        
+        /* Responsive design */
+        @media (max-width: 768px) {
+            .slides-container {
+                height: 400px;
+            }
+            
+            .slide-content {
+                padding: 20px;
+            }
+            
+            .slide-title {
+                font-size: 1.5rem;
+            }
+            
+            .slide-description {
+                font-size: 1rem;
+                max-width: 100%;
+            }
+        }
+        
+        @media (max-width: 480px) {
+            .slides-container {
+                height: 300px;
+            }
+            
+            .section-title {
+                font-size: 2rem;
+            }
+            
+            .slide-content {
+                padding: 15px;
+            }
+            
+            .slide-title {
+                font-size: 1.3rem;
+            }
+            
+            .project-thumbnails {
+                gap: 10px;
+            }
+            
+            .thumbnail {
+                width: 80px;
+                height: 60px;
+            }
+        }
+
   </style>
 </head>
 <body>
@@ -580,83 +806,72 @@
     
     <div class="projects" id="projects">
       <h3>PROJECTS</h3>
-      <div class="project-cards">
-        <div class="card">
-          <div class="card-inner">
-            <div class="card-front">
-              <div style="background: linear-gradient(45deg, #3498db, #2c3e50); height: 250px;"><img src="images/project1.png" alt=""></div>
-              <h3>GRACE</h3>
+      <div class="gallery-slideshow">
+            <div class="slides-container" id="slides-container">
+                <!-- Slide 1 -->
+                <div class="slide">
+                    <div class="slide-image" style="background: linear-gradient(45deg, #3498db, #2c3e50);"></div>
+                    <div class="slide-content">
+                        <h3 class="slide-title">GRACE Design</h3>
+                        <p class="slide-description">A graphical message about the grace of God, created with careful attention to typography and visual hierarchy.</p>
+                        <a href="#" class="slide-link">View Project</a>
+                    </div>
+                </div>
+                
+                <!-- Slide 2 -->
+                <div class="slide">
+                    <div class="slide-image" style="background: linear-gradient(45deg, #e74c3c, #c0392b);"></div>
+                    <div class="slide-content">
+                        <h3 class="slide-title">REAL ESTATE-ING</h3>
+                        <p class="slide-description">Designed a bold, modern flyer for a real estate training session aimed at aspiring agents and investors.</p>
+                        <a href="#" class="slide-link">View Project</a>
+                    </div>
+                </div>
+                
+                <!-- Slide 3 -->
+                <div class="slide">
+                    <div class="slide-image" style="background: linear-gradient(45deg, #2ecc71, #27ae60);"></div>
+                    <div class="slide-content">
+                        <h3 class="slide-title">FIBROID AWARENESS</h3>
+                        <p class="slide-description">Campaign design for NIMSA-ELF to create awareness and educate the public about fibroid disease.</p>
+                        <a href="#" class="slide-link">View Project</a>
+                    </div>
+                </div>
+                
+                <!-- Slide 4 -->
+                <div class="slide">
+                    <div class="slide-image" style="background: linear-gradient(45deg, #9b59b6, #8e44ad);"></div>
+                    <div class="slide-content">
+                        <h3 class="slide-title">SEASON'S GREETINGS</h3>
+                        <p class="slide-description">Holiday design that can be sent out to commemorate with loved ones, friends and families.</p>
+                        <a href="#" class="slide-link">View Project</a>
+                    </div>
+                </div>
+                
+                <!-- Slide 5 -->
+                <div class="slide">
+                    <div class="slide-image" style="background: linear-gradient(45deg, #f1c40f, #f39c12);"></div>
+                    <div class="slide-content">
+                        <h3 class="slide-title">FLY HIGH</h3>
+                        <p class="slide-description">Web3 design showcasing my proficiency in modern digital design trends and blockchain aesthetics.</p>
+                        <a href="#" class="slide-link">View Project</a>
+                    </div>
+                </div>
             </div>
-            <div class="card-back">
-              <div class="backback" style="background: linear-gradient(45deg, #3498db, #2c3e50);"><img src="images/project1.png" alt=""></div>
-              <h3>GRACE</h3>
-              <p>A graphical message about the grace of God</p>
-              <a href="#">View Project</a>
+            
+            <div class="gallery-controls">
+                <button class="control-btn" id="prev-btn">❮</button>
+                <button class="control-btn" id="next-btn">❯</button>
             </div>
-          </div>
-        </div>
-
-        <div class="card">
-          <div class="card-inner">
-            <div class="card-front">
-              <div style="background: linear-gradient(45deg, #e74c3c, #c0392b); height: 250px;"><img src="images/project2.png" alt=""></div>
-              <h3>REAL ESTATE-ING</h3>
+            
+            <div class="slide-indicators" id="slide-indicators">
+                <!-- Indicators will be added by JavaScript -->
             </div>
-            <div class="card-back">
-              <div class="backback" style="background: linear-gradient(45deg, #e74c3c, #c0392b); width: 100%;"><img src="images/project2.png" alt=""></div>
-              <h3>REAL ESTATE-ING</h3>
-              <p>Designed a bold, modern flyer for a real estate training session aimed at aspiring agents and investors.</p>
-              <a href="#">View Project</a>
-            </div>
-          </div>
         </div>
         
-        <div class="card">
-          <div class="card-inner">
-            <div class="card-front">
-              <div style="background: linear-gradient(45deg, #2ecc71, #27ae60); height: 250px;"><img src="images/project3.png" alt=""></div>
-              <h3>FIBROID AWARENESS</h3>
-            </div>
-            <div class="card-back">
-              <div class="backback" style="background: linear-gradient(45deg, #2ecc71, #27ae60);"><img src="images/project3.png" alt=""></div>
-              <h3>FIBROID AWARENESS</h3>
-              <p>Designed a bold, modern flyer for a NIMSA-ELF campaign aimed at creating awareness about fibroid disease.</p>
-              <a href="#">View Project</a>
-            </div>
-          </div>
+        <div class="project-thumbnails" id="project-thumbnails">
+            <!-- Thumbnails will be added by JavaScript -->
         </div>
-        
-        <div class="card">
-          <div class="card-inner">
-            <div class="card-front">
-              <div style="background: linear-gradient(45deg, #9b59b6, #8e44ad); height: 250px;"><img src="images/project4.png" alt=""></div>
-              <h3>FESTIFY</h3>
-            </div>
-            <div class="card-back">
-              <div class="backback" style="background: linear-gradient(45deg, #9b59b6, #8e44ad);"><img src="images/project4.png" alt=""></div>
-              <h3>Buone Feste</h3>
-              <p>I made a design that can be sent out during the holidays to commemorate with loved ones.</p>
-              <a href="#">View Project</a>
-            </div>
-          </div>
-        </div>
-        
-        <div class="card">
-          <div class="card-inner">
-            <div class="card-front">
-              <div style="background: linear-gradient(45deg, #9b59b6, #8e44ad); height: 250px;"><img src="images/project7.jpg" alt=""></div>
-              <h3>SPICED-UP</h3>
-            </div>
-            <div class="card-back">
-              <div class="backback" style="background: linear-gradient(45deg, #9b59b6, #8e44ad);"><img src="images/project7.jpg" alt=""></div>
-              <h3>ICE_SPICE 🔥</h3>
-              <p>A sticker design for a local spicy 'kilishi' brand.
-              It was HOT! 🥵</p>
-              <a href="#">View Project</a>
-            </div>
-          </div>
-        </div>
-      </div>
     </div>
     
     <div class="skills" id="skills">
